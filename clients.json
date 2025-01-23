@@ -1,0 +1,74 @@
+[
+    {
+        "uid": 1,
+        "nombre_completo": "JUAN MANUEL MAYA MORA",
+        "direccion": "MARAVATIO",
+        "telefono": "4471108301",
+        "articulos": [
+            {
+                "codigo": "A004",
+                "nombre": "TOLDO DE 3X3 BLANCO",
+                "precio": 1500.0
+            },
+            {
+                "codigo": "A010",
+                "nombre": "CALENTADOR SOLAR DE 15 TUBOS",
+                "precio": 3500.0
+            }
+        ],
+        "precio_total": 5000.0,
+        "abonos": [
+            500.0,
+            4500.0
+        ],
+        "saldo_pendiente": 0.0
+    },
+    {
+        "uid": 2,
+        "nombre_completo": "MARGARITA LOPEZ MARTINEZ",
+        "direccion": "PATEO",
+        "telefono": "4471023455",
+        "articulos": [
+            {
+                "codigo": "A009",
+                "nombre": "SILLA PEGABLE NEGRA",
+                "precio": 430.0
+            }
+        ],
+        "precio_total": 430.0,
+        "abonos": [],
+        "saldo_pendiente": 430.0
+    },
+    {
+        "uid": 3,
+        "nombre_completo": "ADRIANA LOPEZ PEREZ",
+        "direccion": "POMOCA",
+        "telefono": "4179802226",
+        "articulos": [
+            {
+                "codigo": "A010",
+                "nombre": "CALENTADOR SOLAR DE 15 TUBOS",
+                "precio": 3500.0
+            }
+        ],
+        "precio_total": 3500.0,
+        "abonos": [],
+        "saldo_pendiente": 3500.0
+    },
+    {
+        "uid": 4,
+        "nombre_completo": "GERARDO MONDRAGON PEREZ",
+        "direccion": "15 DE SEPTIEMBRE #989 SAN MIGUEL C. MARAVATIO",
+        "telefono": "4471074567",
+        "articulos": [
+            {
+                "codigo": "A001",
+                "nombre": "BOMBA DE AGUA",
+                "precio": 550
+            }
+        ],
+        "precio_total": 550,
+        "abonos": [],
+        "saldo_pendiente": 550
+    }
+]

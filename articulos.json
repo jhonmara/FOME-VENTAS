@@ -1,0 +1,47 @@
+[
+    {
+        "codigo": "A001",
+        "nombre": "BOMBA DE AGUA",
+        "precio": 550
+    },
+    {
+        "codigo": "A003",
+        "nombre": "TOLDO DE 3X3 AZUL",
+        "precio": 1500.0
+    },
+    {
+        "codigo": "A004",
+        "nombre": "TOLDO DE 3X3 BLANCO",
+        "precio": 1500.0
+    },
+    {
+        "codigo": "A005",
+        "nombre": "TOLDO DE 3X3 ROJO",
+        "precio": 1500.0
+    },
+    {
+        "codigo": "A007",
+        "nombre": "MESA DE 2.40 BLANCA DE PORTAFOLIO",
+        "precio": 1700.0
+    },
+    {
+        "codigo": "A008",
+        "nombre": "TANQUE DE GAS DE 9 KILOS",
+        "precio": 950.0
+    },
+    {
+        "codigo": "A009",
+        "nombre": "SILLA PEGABLE NEGRA",
+        "precio": 430.0
+    },
+    {
+        "codigo": "A010",
+        "nombre": "CALENTADOR SOLAR DE 15 TUBOS",
+        "precio": 3500.0
+    },
+    {
+        "codigo": "A011",
+        "nombre": "SILLA PLEGABLE BLANCA",
+        "precio": 430.0
+    }
+]
