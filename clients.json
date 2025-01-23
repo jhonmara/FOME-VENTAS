@@ -1,9 +1,9 @@
 [
     {
         "uid": 1,
-        "nombre_completo": "JUAN MANUEL MAYA MORA",
+        "nombre_completo": "JUAN MORA RAMIREZ",
         "direccion": "MARAVATIO",
-        "telefono": "4471108301",
+        "telefono": "4400000000",
         "articulos": [
             {
                 "codigo": "A004",
@@ -27,7 +27,7 @@
         "uid": 2,
         "nombre_completo": "MARGARITA LOPEZ MARTINEZ",
         "direccion": "PATEO",
-        "telefono": "4471023455",
+        "telefono": "4411111111",
         "articulos": [
             {
                 "codigo": "A009",
@@ -43,7 +43,7 @@
         "uid": 3,
         "nombre_completo": "ADRIANA LOPEZ PEREZ",
         "direccion": "POMOCA",
-        "telefono": "4179802226",
+        "telefono": "4122222222",
         "articulos": [
             {
                 "codigo": "A010",
@@ -58,8 +58,8 @@
     {
         "uid": 4,
         "nombre_completo": "GERARDO MONDRAGON PEREZ",
-        "direccion": "15 DE SEPTIEMBRE #989 SAN MIGUEL C. MARAVATIO",
-        "telefono": "4471074567",
+        "direccion": " MARAVATIO",
+        "telefono": "4433333333",
         "articulos": [
             {
                 "codigo": "A001",
