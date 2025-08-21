@@ -1,1 +1,15 @@
-[]
+[
+    {
+        "id": 1,
+        "Nombre": "felipe lopez",
+        "Teléfono": "4471108301",
+        "Artículos": [
+            {
+                "Nombre": "tinaco de 1200 litros",
+                "Precio Proveedor": 1400.0,
+                "Precio Público": 1800.0,
+                "Cantidad": 10
+            }
+        ]
+    }
+]

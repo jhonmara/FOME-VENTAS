@@ -1,1 +1,54 @@
-[]
+[
+    {
+        "id": 1,
+        "Nombre": "juan manuel maya mora",
+        "Dirección": "apeo",
+        "Teléfono": "4471108301",
+        "Compras": [
+            {
+                "Nombre": "Tinaco de 1200 litros",
+                "Cantidad": 1,
+                "Total": 1300.0,
+                "Por Pedir": false
+            }
+        ],
+        "Total Compras": 1300.0,
+        "Abono": 0.0,
+        "Deuda": 1300.0,
+        "Fecha Ingreso": "2025-08-20 15:33:03",
+        "Artículos": [
+            {
+                "Nombre": "Tinaco de 1200 litros",
+                "Cantidad": 1,
+                "Total": 1300.0,
+                "Por Pedir": false
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "Nombre": "juan lopez perez",
+        "Dirección": "apeo",
+        "Teléfono": "4471108301",
+        "Compras": [
+            {
+                "Nombre": "Tinaco de 1200 litros",
+                "Cantidad": 1,
+                "Total": 1800.0,
+                "Por Pedir": false
+            }
+        ],
+        "Total Compras": 1800.0,
+        "Abono": 0.0,
+        "Deuda": 1800.0,
+        "Fecha Ingreso": "2025-08-21 10:17:38",
+        "Artículos": [
+            {
+                "Nombre": "Tinaco de 1200 litros",
+                "Cantidad": 1,
+                "Total": 1800.0,
+                "Por Pedir": false
+            }
+        ]
+    }
+]

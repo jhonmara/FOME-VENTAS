@@ -125,6 +125,7 @@ def menu_principal():
 
     ttk.Button(frame, text="Menú Clientes", command=menu_clientes, bootstyle="primary", width=30).pack(pady=5)
     ttk.Button(frame, text="Menú Artículos", command=menu_articulos, bootstyle="success", width=30).pack(pady=5)
+    ttk.Button(frame, text="Menú Proveedores", command=menu_proveedores, bootstyle="warning", width=30).pack(pady=5)
     ttk.Button(frame, text="Exportar Datos a Excel", command=exportar_excel, bootstyle="info", width=30).pack(pady=5)
     ttk.Button(frame, text="Salir", command=cerrar_aplicacion, bootstyle="danger", width=30).pack(pady=20)
 
@@ -1064,6 +1065,173 @@ def eliminar_articulo():
 
     ttk.Button(frame, text="Eliminar", command=eliminar, bootstyle=DANGER).pack(pady=5)
     ttk.Button(frame, text="Cancelar", command=menu_articulos, bootstyle=SECONDARY).pack(pady=5)
+
+
+
+# --- GESTIÓN DE PROVEEDORES ---
+def menu_proveedores():
+    limpiar_pantalla()
+    frame = ttk.Frame(root)
+    frame.pack(pady=20)
+
+    ttk.Label(frame, text="Menú Proveedores", font=("Arial", 14, "bold")).pack(pady=10)
+
+    ttk.Button(frame, text="Ingresar Nuevo Proveedor", command=ingresar_proveedor, bootstyle="primary", width=30).pack(pady=5)
+    ttk.Button(frame, text="Ver Proveedores", command=ver_proveedores, bootstyle="info", width=30).pack(pady=5)
+    ttk.Button(frame, text="Buscar Proveedor", command=buscar_proveedor, bootstyle="success", width=30).pack(pady=5)
+    ttk.Button(frame, text="Eliminar Proveedor", command=eliminar_proveedor, bootstyle="danger", width=30).pack(pady=5)
+    ttk.Button(frame, text="Regresar al Menú", command=menu_principal, bootstyle="secondary", width=30).pack(pady=5)
+
+
+def ingresar_proveedor():
+    limpiar_pantalla()
+    frame = ttk.Frame(root)
+    frame.pack(pady=20)
+
+    ttk.Label(frame, text="Ingresar Nuevo Proveedor", font=("Arial", 14, "bold")).pack(pady=10)
+
+    ttk.Label(frame, text="Nombre").pack()
+    entrada_nombre = ttk.Entry(frame)
+    entrada_nombre.pack()
+
+    ttk.Label(frame, text="Teléfono").pack()
+    entrada_telefono = ttk.Entry(frame)
+    entrada_telefono.pack()
+
+    articulos = []
+
+    def agregar_articulo_proveedor():
+        ventana = Toplevel(root)
+        ventana.title("Agregar Artículo del Proveedor")
+        ventana.geometry("300x300")
+
+        ttk.Label(ventana, text="Nombre del artículo").pack()
+        entrada_nombre_art = ttk.Entry(ventana)
+        entrada_nombre_art.pack()
+
+        ttk.Label(ventana, text="Precio Proveedor").pack()
+        entrada_precio_proveedor = ttk.Entry(ventana)
+        entrada_precio_proveedor.pack()
+
+        ttk.Label(ventana, text="Precio Público").pack()
+        entrada_precio_publico = ttk.Entry(ventana)
+        entrada_precio_publico.pack()
+
+        ttk.Label(ventana, text="Cantidad").pack()
+        entrada_cantidad = ttk.Entry(ventana)
+        entrada_cantidad.pack()
+
+        def guardar_art():
+            try:
+                nombre = entrada_nombre_art.get().strip()
+                precio_prov = float(entrada_precio_proveedor.get())
+                precio_pub = float(entrada_precio_publico.get())
+                cantidad = int(entrada_cantidad.get())
+            except ValueError:
+                messagebox.showwarning("Error", "Datos inválidos en el artículo")
+                return
+
+            articulo = {
+                "Nombre": nombre,
+                "Precio Proveedor": precio_prov,
+                "Precio Público": precio_pub,
+                "Cantidad": cantidad
+            }
+            articulos.append(articulo)
+
+            # Agregar al almacén
+            existente = next((a for a in almacen if a["Nombre"].lower() == nombre.lower()), None)
+            if existente:
+                existente["Stock"] += cantidad
+                existente["Precio Público"] = precio_pub
+                existente["Precio Proveedor"] = precio_prov
+            else:
+                almacen.append({
+                    "ID": len(almacen) + 1,
+                    "Nombre": nombre,
+                    "Precio Público": precio_pub,
+                    "Precio Proveedor": precio_prov,
+                    "Stock": cantidad,
+                    "Fecha Ingreso": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                })
+            guardar_datos(ALMACEN_JSON, almacen)
+
+            ventana.destroy()
+            if messagebox.askyesno("Agregar otro", "¿Desea agregar otro artículo?"):
+                agregar_articulo_proveedor()
+
+        ttk.Button(ventana, text="Guardar Artículo", command=guardar_art).pack(pady=5)
+
+    def guardar_proveedor():
+        nombre = entrada_nombre.get().strip()
+        telefono = entrada_telefono.get().strip()
+
+        if not nombre or not telefono:
+            messagebox.showwarning("Advertencia", "Todos los campos son obligatorios.")
+            return
+
+        nuevo_proveedor = {
+            "id": len(proveedores) + 1,
+            "Nombre": nombre,
+            "Teléfono": telefono,
+            "Artículos": articulos
+        }
+        proveedores.append(nuevo_proveedor)
+        guardar_datos(ARCHIVO_PROVEEDORES, proveedores)
+        messagebox.showinfo("Éxito", f"Proveedor '{nombre}' registrado con {len(articulos)} artículos.")
+        menu_proveedores()
+
+    ttk.Button(frame, text="Agregar Artículo", command=agregar_articulo_proveedor).pack(pady=5)
+    ttk.Button(frame, text="Guardar Proveedor", command=guardar_proveedor, bootstyle="success").pack(pady=5)
+    ttk.Button(frame, text="Cancelar", command=menu_proveedores, bootstyle="danger").pack(pady=5)
+
+
+def ver_proveedores():
+    limpiar_pantalla()
+    frame = ttk.Frame(root)
+    frame.pack(pady=20)
+
+    ttk.Label(frame, text="Lista de Proveedores", font=("Arial", 14, "bold")).pack(pady=10)
+
+    if not proveedores:
+        ttk.Label(frame, text="No hay proveedores registrados.", font=("Arial", 12)).pack(pady=10)
+    else:
+        for prov in proveedores:
+            ttk.Label(frame, text=f"ID: {prov['id']} - {prov['Nombre']} - Tel: {prov['Teléfono']}", font=("Arial", 10)).pack(pady=2)
+
+    ttk.Button(frame, text="Regresar", command=menu_proveedores, bootstyle="secondary").pack(pady=10)
+
+
+def buscar_proveedor():
+    nombre = simpledialog.askstring("Buscar Proveedor", "Ingrese el nombre del proveedor:")
+    if not nombre:
+        return
+    nombre = nombre.strip().lower()
+
+    proveedor = next((p for p in proveedores if nombre in p["Nombre"].lower()), None)
+    if not proveedor:
+        messagebox.showerror("Error", "Proveedor no encontrado.")
+        return
+
+    articulos = "\n".join([f"- {a['Nombre']} x{a['Cantidad']} (Pub: ${a['Precio Público']}, Prov: ${a['Precio Proveedor']})" for a in proveedor["Artículos"]])
+    messagebox.showinfo("Proveedor Encontrado", f"Nombre: {proveedor['Nombre']}\nTel: {proveedor['Teléfono']}\n\nArtículos:\n{articulos}")
+
+
+def eliminar_proveedor():
+    nombre = simpledialog.askstring("Eliminar Proveedor", "Ingrese el nombre del proveedor:")
+    if not nombre:
+        return
+    nombre = nombre.strip().lower()
+
+    global proveedores
+    proveedores_filtrados = [p for p in proveedores if p["Nombre"].lower() != nombre]
+    if len(proveedores) == len(proveedores_filtrados):
+        messagebox.showinfo("Resultado", "Proveedor no encontrado.")
+    else:
+        proveedores = proveedores_filtrados
+        guardar_datos(ARCHIVO_PROVEEDORES, proveedores)
+        messagebox.showinfo("Éxito", f"Proveedor '{nombre}' eliminado correctamente.")
+    ver_proveedores()
 
 # DATOS DE EXCEL
 def exportar_excel():
