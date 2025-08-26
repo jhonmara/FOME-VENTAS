@@ -1,53 +1,211 @@
 [
     {
         "id": 1,
-        "Nombre": "juan manuel maya mora",
-        "Dirección": "apeo",
+        "Nombre": "santiago maya",
+        "Dirección": "20 de noviembre",
         "Teléfono": "4471108301",
         "Compras": [
             {
-                "Nombre": "Tinaco de 1200 litros",
+                "Nombre": "SILLA BLANCA",
                 "Cantidad": 1,
-                "Total": 1300.0,
-                "Por Pedir": false
+                "Total": 500.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
             }
         ],
-        "Total Compras": 1300.0,
+        "Total Compras": 500.0,
         "Abono": 0.0,
-        "Deuda": 1300.0,
-        "Fecha Ingreso": "2025-08-20 15:33:03",
+        "Deuda": 500.0,
+        "Fecha Ingreso": "2025-08-25 18:47:22",
         "Artículos": [
             {
-                "Nombre": "Tinaco de 1200 litros",
+                "Nombre": "SILLA BLANCA",
                 "Cantidad": 1,
-                "Total": 1300.0,
-                "Por Pedir": false
+                "Total": 500.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
             }
         ]
     },
     {
         "id": 2,
-        "Nombre": "juan lopez perez",
-        "Dirección": "apeo",
+        "Nombre": "elena maya juarez",
+        "Dirección": "san miguel curahuango",
+        "Teléfono": "4431099770",
+        "Compras": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ],
+        "Total Compras": 1000.0,
+        "Abono": 0.0,
+        "Deuda": 1000.0,
+        "Fecha Ingreso": "2025-08-25 18:49:49",
+        "Artículos": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "Nombre": "ESTEBAN LOPEZ",
+        "Dirección": "PATEO",
+        "Teléfono": "4471102334",
+        "Compras": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 1,
+                "Total": 500.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            },
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ],
+        "Total Compras": 1500.0,
+        "Abono": 0.0,
+        "Deuda": 1500.0,
+        "Fecha Ingreso": "2025-08-25 18:56:53",
+        "Artículos": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 1,
+                "Total": 500.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            },
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "Nombre": "MARIO PEREZ",
+        "Dirección": "TLAPUJAHUA",
+        "Teléfono": "4472154334",
+        "Compras": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ],
+        "Total Compras": 1000.0,
+        "Abono": 1000.0,
+        "Deuda": 0.0,
+        "Fecha Ingreso": "2025-08-25 19:07:28",
+        "Artículos": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "Nombre": "DOLORES MORA DELGADO",
+        "Dirección": "APEO",
         "Teléfono": "4471108301",
         "Compras": [
             {
-                "Nombre": "Tinaco de 1200 litros",
-                "Cantidad": 1,
-                "Total": 1800.0,
-                "Por Pedir": false
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
             }
         ],
-        "Total Compras": 1800.0,
-        "Abono": 0.0,
-        "Deuda": 1800.0,
-        "Fecha Ingreso": "2025-08-21 10:17:38",
+        "Total Compras": 1000.0,
+        "Abono": 1000.0,
+        "Deuda": 0.0,
+        "Fecha Ingreso": "2025-08-25 19:22:34",
         "Artículos": [
             {
-                "Nombre": "Tinaco de 1200 litros",
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "Nombre": "martin lopez cruz",
+        "Dirección": "pomas",
+        "Teléfono": "44731099770",
+        "Compras": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ],
+        "Total Compras": 1000.0,
+        "Abono": 1000.0,
+        "Deuda": 0.0,
+        "Fecha Ingreso": "2025-08-25 19:34:51",
+        "Artículos": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 2,
+                "Total": 1000.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "Nombre": "guadalupe soriana",
+        "Dirección": "tungareo",
+        "Teléfono": "4431089770",
+        "Compras": [
+            {
+                "Nombre": "SILLA BLANCA",
                 "Cantidad": 1,
-                "Total": 1800.0,
-                "Por Pedir": false
+                "Total": 500.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
+            }
+        ],
+        "Total Compras": 500.0,
+        "Abono": 500.0,
+        "Deuda": 0.0,
+        "Fecha Ingreso": "2025-08-25 19:42:25",
+        "Artículos": [
+            {
+                "Nombre": "SILLA BLANCA",
+                "Cantidad": 1,
+                "Total": 500.0,
+                "Por Pedir": false,
+                "Precio Unitario": 500.0
             }
         ]
     }

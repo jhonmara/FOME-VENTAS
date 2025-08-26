@@ -1,15 +1,34 @@
 [
     {
         "id": 1,
-        "Nombre": "felipe lopez",
-        "Teléfono": "4471108301",
-        "Artículos": [
+        "Nombre": "martin caballero hernandez",
+        "Teléfono": "4431098765",
+        "Artículos Ingresados": [
             {
-                "Nombre": "tinaco de 1200 litros",
-                "Precio Proveedor": 1400.0,
-                "Precio Público": 1800.0,
-                "Cantidad": 10
+                "Nombre": "tinaco",
+                "Cantidad": 10,
+                "Precio Proveedor": 1450.0,
+                "Precio Público": 1600.0
             }
-        ]
+        ],
+        "Adeudo Total": 14500.0,
+        "Fecha Ingreso": "2025-08-25 13:57:44",
+        "Abonos": []
+    },
+    {
+        "id": 2,
+        "Nombre": "oscar martinez perez",
+        "Teléfono": "4471089091",
+        "Artículos Ingresados": [
+            {
+                "Nombre": "cama tubular",
+                "Cantidad": 10,
+                "Precio Proveedor": 1450.0,
+                "Precio Público": 1700.0
+            }
+        ],
+        "Adeudo Total": 14500.0,
+        "Fecha Ingreso": "2025-08-25 14:04:05",
+        "Abonos": []
     }
 ]
