@@ -205,7 +205,7 @@ def ingresar_cliente():
     limpiar_pantalla()
     frame = ttk.Frame(root)
     frame.pack(pady=20)
-    
+
     compras = []  # Inicializar lista de compras
 
     ttk.Label(frame, text="Ingresar Nuevo Cliente", font=("Arial", 14, "bold")).pack(pady=10)
@@ -230,27 +230,22 @@ def ingresar_cliente():
     # Checkbox para marcar si es artículo por pedir
     es_por_pedir = BooleanVar(value=False)
     ttk.Checkbutton(frame, text="Es artículo por pedir", variable=es_por_pedir, bootstyle="warning").pack(pady=5)
-    
-    # --- Función interna para agregar artículo ---
+
     def agregar_articulo():
-        ventana_articulo = Toplevel(root)
-        ventana_articulo.title("Agregar Artículo")
-        ventana_articulo.geometry("300x250")
-
-        if es_por_pedir.get():
-            ttk.Label(ventana_articulo, text="Nombre del artículo").pack()
-            entrada_nombre_articulo = ttk.Entry(ventana_articulo)
-            entrada_nombre_articulo.pack()
-
-            ttk.Label(ventana_articulo, text="Cantidad").pack()
-            entrada_cantidad = ttk.Entry(ventana_articulo)
-            entrada_cantidad.pack()
-
-            ttk.Label(ventana_articulo, text="Precio unitario").pack()
-            entrada_precio = ttk.Entry(ventana_articulo)
-            entrada_precio.pack()
+        """
+        Muestra una ventana para elegir si el artículo es por pedir o de almacén
+        y luego abre la ventana correspondiente.
+        """
+        def abrir_manual():
+            """Abre la ventana para agregar un artículo por pedir manualmente."""
+            # Asegúrate de destruir la ventana de selección antes de abrir la nueva
+            ventana_seleccionar_tipo.destroy()
+            ventana_articulo = Toplevel(root)
+            ventana_articulo.title("Agregar Artículo por Pedir")
+            ventana_articulo.geometry("300x250")
 
             def guardar_manual():
+                """Guarda el artículo por pedir y pregunta si desea agregar otro."""
                 nombre = entrada_nombre_articulo.get().strip()
                 try:
                     cantidad = int(entrada_cantidad.get())
@@ -269,26 +264,39 @@ def ingresar_cliente():
                     "Por Pedir": True,
                     "Precio Unitario": precio
                 })
-                ventana_articulo.destroy()
 
-                if messagebox.askyesno("Agregar otro", "¿Agregar otro artículo por pedir?"):
+                # Preguntar si quiere agregar otro artículo, volviendo al menú de selección
+                if messagebox.askyesno("Agregar otro artículo", "¿Desea agregar otro artículo?"):
+                    ventana_articulo.destroy()
                     agregar_articulo()
+                else:
+                    ventana_articulo.destroy()
 
-            ttk.Button(ventana_articulo, text="Guardar Artículo", command=guardar_manual).pack(pady=5)
-            ttk.Button(ventana_articulo, text="Cancelar", command=ventana_articulo.destroy).pack(pady=5)
-
-        else:
-            ttk.Label(ventana_articulo, text="Seleccionar artículo").pack()
-            seleccion_articulo = StringVar()
-            articulo_menu = ttk.Combobox(ventana_articulo, textvariable=seleccion_articulo)
-            articulo_menu['values'] = [item['Nombre'] for item in almacen]
-            articulo_menu.pack()
+            ttk.Label(ventana_articulo, text="Nombre del artículo").pack()
+            entrada_nombre_articulo = ttk.Entry(ventana_articulo)
+            entrada_nombre_articulo.pack()
 
             ttk.Label(ventana_articulo, text="Cantidad").pack()
             entrada_cantidad = ttk.Entry(ventana_articulo)
             entrada_cantidad.pack()
 
+            ttk.Label(ventana_articulo, text="Precio unitario").pack()
+            entrada_precio = ttk.Entry(ventana_articulo)
+            entrada_precio.pack()
+
+            ttk.Button(ventana_articulo, text="Guardar Artículo", command=guardar_manual).pack(pady=5)
+            ttk.Button(ventana_articulo, text="Cancelar", command=ventana_articulo.destroy).pack(pady=5)
+
+        def abrir_almacen():
+            """Abre la ventana para agregar un artículo desde el almacén."""
+            # Asegúrate de destruir la ventana de selección antes de abrir la nueva
+            ventana_seleccionar_tipo.destroy()
+            ventana_articulo = Toplevel(root)
+            ventana_articulo.title("Agregar Artículo de Almacén")
+            ventana_articulo.geometry("300x250")
+
             def guardar_articulo():
+                """Guarda el artículo del almacén y pregunta si desea agregar otro."""
                 nombre_articulo = seleccion_articulo.get()
                 try:
                     cantidad = int(entrada_cantidad.get())
@@ -305,9 +313,6 @@ def ingresar_cliente():
                             return
                         # Descontar stock
                         item["Stock"] -= cantidad
-                        # Guardar cambios en archivo
-                        guardar_datos(ALMACEN_JSON, almacen)
-
                         precio_total = item["Precio Público"] * cantidad
                         compras.append({
                             "Nombre": nombre_articulo,
@@ -318,18 +323,37 @@ def ingresar_cliente():
                         })
                         break
 
-                ventana_articulo.destroy()
-
-                if messagebox.askyesno("Agregar otro artículo", "¿Deseas agregar otro artículo?"):
+                # Preguntar si quiere agregar otro artículo, volviendo al menú de selección
+                if messagebox.askyesno("Agregar otro artículo", "¿Desea agregar otro artículo?"):
+                    ventana_articulo.destroy()
                     agregar_articulo()
+                else:
+                    ventana_articulo.destroy()
+            
+            ttk.Label(ventana_articulo, text="Seleccionar artículo").pack()
+            seleccion_articulo = ttk.Combobox(ventana_articulo, values=[item['Nombre'] for item in almacen])
+            seleccion_articulo.pack()
+
+            ttk.Label(ventana_articulo, text="Cantidad").pack()
+            entrada_cantidad = ttk.Entry(ventana_articulo)
+            entrada_cantidad.pack()
 
             ttk.Button(ventana_articulo, text="Guardar Artículo", command=guardar_articulo).pack(pady=5)
             ttk.Button(ventana_articulo, text="Cancelar", command=ventana_articulo.destroy).pack(pady=5)
 
+        # Ventana de selección
+        ventana_seleccionar_tipo = Toplevel(root)
+        ventana_seleccionar_tipo.title("Seleccionar Tipo de Artículo")
+        ventana_seleccionar_tipo.geometry("300x150")
+
+        ttk.Label(ventana_seleccionar_tipo, text="¿Qué tipo de artículo desea agregar?").pack(pady=10)
+        ttk.Button(ventana_seleccionar_tipo, text="Artículo Por Pedir", command=abrir_manual, bootstyle="info").pack(pady=5)
+        ttk.Button(ventana_seleccionar_tipo, text="Artículo de Almacén", command=abrir_almacen, bootstyle="success").pack(pady=5)
+        ttk.Button(ventana_seleccionar_tipo, text="Cancelar", command=ventana_seleccionar_tipo.destroy, bootstyle="danger").pack(pady=5)
+
     ttk.Button(frame, text="Agregar Artículo", command=agregar_articulo).pack(pady=5)
     ttk.Button(frame, text="Guardar Cliente", command=guardar_cliente, bootstyle="success").pack(pady=5)
     ttk.Button(frame, text="Cancelar", command=menu_clientes, bootstyle="danger").pack(pady=5)
-
 # --- Guardar cliente ---
 def guardar_cliente():
     """
@@ -697,11 +721,6 @@ def imprimir_nota(cliente, on_complete_callback=None):
         c.drawCentredString(width/2, height-80, "Maravatío, Michoacán")
         c.drawCentredString(width/2, height-95, "SEDATU del Panteón")
 
-        # Se elimina el Folio grande y rojo de aquí
-        # c.setFont("Helvetica-Bold", 16)
-        # c.setFillColorRGB(1, 0, 0)
-        # c.drawRightString(width - 50, height - 50, f"No. {nuevo_folio}")
-        # c.setFillColorRGB(0, 0, 0)
 
         # --- Datos del cliente ---
         y_cliente = height - 130
@@ -789,7 +808,7 @@ def imprimir_nota(cliente, on_complete_callback=None):
     ttk.Button(frame_botones, text="Guardar como TXT", command=guardar_txt).pack(side="left", padx=5)
     ttk.Button(frame_botones, text="Guardar y Aceptar", command=guardar_y_aceptar).pack(side="left", padx=5)
     ttk.Button(frame_botones, text="Cancelar", command=nota_window.destroy).pack(side="left", padx=5)
-    
+
 def ver_clientes():
     """Muestra la lista de clientes con opciones para ver y eliminar."""
     limpiar_pantalla()
